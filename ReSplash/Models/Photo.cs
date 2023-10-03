@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReSplash.Models
 {
     public class Photo
     {
         public int PhotoId { get; set; }
-        
+
+        [DisplayName("File Name")]
         public string FileName { get; set; } = string.Empty;
 
         [DataType(DataType.DateTime)]

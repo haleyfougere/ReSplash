@@ -14,28 +14,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Photo[0].FileName)
+                @Html.DisplayNameFor(model => model.Photos[0].FileName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Photo[0].PublishDate)
+                @Html.DisplayNameFor(model => model.Photos[0].PublishDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Photo[0].Description)
+                @Html.DisplayNameFor(model => model.Photos[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Photo[0].ImageViews)
+                @Html.DisplayNameFor(model => model.Photos[0].ImageViews)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Photo[0].ImageDownloads)
+                @Html.DisplayNameFor(model => model.Photos[0].ImageDownloads)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Photo[0].Location)
+                @Html.DisplayNameFor(model => model.Photos[0].Location)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Photo) {
+@foreach (var item in Model.Photos) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FileName)
