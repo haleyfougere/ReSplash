@@ -1,0 +1,66 @@
+﻿@page
+@model ReSplash.Pages.Photos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo[0].FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo[0].PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo[0].ImageViews)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo[0].ImageDownloads)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo[0].Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Photo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageViews)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageDownloads)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PhotoId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PhotoId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PhotoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
