@@ -5,62 +5,37 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>My Photos</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-outline-dark">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Photos[0].FileName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photos[0].PublishDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photos[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photos[0].ImageViews)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photos[0].ImageDownloads)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photos[0].Location)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Photos) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FileName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageViews)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageDownloads)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.PhotoId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.PhotoId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.PhotoId">Delete</a>
-            </td>
-        </tr>
+
+@foreach (var item in Model.Photos)
+{
+    string imagePath = "~/photos/" + item.FileName;
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Url.Content(imagePath)" class="img-fluid">
+        </div>
+
+        <div class="col-md-8">
+            <p>Published @item.PublishDate.ToString("MMM dd, yyyy")</p>
+
+            <p>@item.Description</p>
+
+            <p>Views: @item.ImageViews &nbsp;&nbsp; Downloads: @item.ImageDownloads</p>
+
+            <p>@item.Location</p>
+
+            <p>
+                <a asp-page="./Edit" asp-route-id="@item.PhotoId" class="btn btn-outline-dark">Edit</a>&nbsp;&nbsp;
+                <a asp-page="./Delete" asp-route-id="@item.PhotoId" class="btn btn-outline-dark">Delete</a>
+            </p>
+        </div>
+
+    </div>
+
+    <br />
 }
-    </tbody>
-</table>

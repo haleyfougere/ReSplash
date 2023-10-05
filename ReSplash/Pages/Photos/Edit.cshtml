@@ -3,58 +3,54 @@
 
 @{
     ViewData["Title"] = "Edit";
+
+    string imagePath = "~/photos/" + Model.Photo.FileName;
 }
 
 <h1>Edit</h1>
 
-<h4>Photo</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
+        <img src="@Url.Content(imagePath)" class="img-fluid">
+    </div>
+
+    <div class="col-md-8">
+
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <input type="hidden" asp-for="Photo.PhotoId" />
-            <div class="form-group">
-                <label asp-for="Photo.FileName" class="control-label"></label>
-                <input asp-for="Photo.FileName" class="form-control" />
-                <span asp-validation-for="Photo.FileName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <input type="hidden" asp-for="Photo.ImageViews" />
+            <input type="hidden" asp-for="Photo.ImageDownloads" />
+            <input type="hidden" asp-for="Photo.FileName" />
+
+            <div class="mb-3">
                 <label asp-for="Photo.PublishDate" class="control-label"></label>
-                <input asp-for="Photo.PublishDate" class="form-control" />
+                <input asp-for="Photo.PublishDate" class="form-control" readonly />
                 <span asp-validation-for="Photo.PublishDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="mb-3">
                 <label asp-for="Photo.Description" class="control-label"></label>
                 <input asp-for="Photo.Description" class="form-control" />
                 <span asp-validation-for="Photo.Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Photo.ImageViews" class="control-label"></label>
-                <input asp-for="Photo.ImageViews" class="form-control" />
-                <span asp-validation-for="Photo.ImageViews" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photo.ImageDownloads" class="control-label"></label>
-                <input asp-for="Photo.ImageDownloads" class="form-control" />
-                <span asp-validation-for="Photo.ImageDownloads" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+            <div class="mb-3">
                 <label asp-for="Photo.Location" class="control-label"></label>
                 <input asp-for="Photo.Location" class="form-control" />
                 <span asp-validation-for="Photo.Location" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" /> &nbsp;&nbsp; <a asp-page="./Index" class="btn btn-outline-dark">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

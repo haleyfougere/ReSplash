@@ -14,18 +14,19 @@ namespace ReSplash.Pages.Photos
     {
         private readonly ReSplash.Data.ReSplashContext _context;
 
+        public IList<Photo> Photos { get; set; } = default!;
+
         public IndexModel(ReSplash.Data.ReSplashContext context)
         {
             _context = context;
         }
 
-        public IList<Photo> Photos { get;set; } = default!;
-
         public async Task OnGetAsync()
         {
             if (_context.Photo != null)
             {
-                Photos = await _context.Photo.ToListAsync();
+                ///////TODO: Add where clause to get a User's Photos/////////
+                Photos = await _context.Photo.OrderByDescending(a => a.PublishDate).ToListAsync();
             }
         }
     }

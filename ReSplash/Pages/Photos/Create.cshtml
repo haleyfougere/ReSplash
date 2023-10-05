@@ -5,45 +5,32 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Add a New Photo</h1>
 
-<h4>Photo</h4>
-<hr />
+<br />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Photo.FileName" class="control-label"></label>
-                <input asp-for="Photo.FileName" class="form-control" />
-                <span asp-validation-for="Photo.FileName" class="text-danger"></span>
+
+            <div class="mb-3">
+                <label for="ImageUpload" class="control-label">Photo</label>
+                <input type="file" asp-for="ImageUpload" class="form-control" />
             </div>
-            <div class="form-group">
-                <label asp-for="Photo.PublishDate" class="control-label"></label>
-                <input asp-for="Photo.PublishDate" class="form-control" />
-                <span asp-validation-for="Photo.PublishDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+            <div class="mb-3">
                 <label asp-for="Photo.Description" class="control-label"></label>
                 <input asp-for="Photo.Description" class="form-control" />
                 <span asp-validation-for="Photo.Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Photo.ImageViews" class="control-label"></label>
-                <input asp-for="Photo.ImageViews" class="form-control" />
-                <span asp-validation-for="Photo.ImageViews" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photo.ImageDownloads" class="control-label"></label>
-                <input asp-for="Photo.ImageDownloads" class="form-control" />
-                <span asp-validation-for="Photo.ImageDownloads" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+            <div class="mb-3">
                 <label asp-for="Photo.Location" class="control-label"></label>
                 <input asp-for="Photo.Location" class="form-control" />
                 <span asp-validation-for="Photo.Location" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -55,5 +42,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
